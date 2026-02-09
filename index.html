@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Will you be my Valentine?</title>
+<title>Modern Living Room Furniture</title>
 
 <!-- Confetti library -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -143,15 +143,17 @@ button {
   <!-- SURPRISE PHOTO (hidden initially) -->
   <img class="art" id="surpriseImage" src="us.jpg" alt="Us together" style="display:none;" />
 
-  <h1>Babygirl, will you be my Valentine?</h1>
+  <!-- WRAPPER FOR QUESTION, BUTTONS, HINT -->
+  <div id="questionArea">
+    <h1>Babygirl, will you be my Valentine?</h1>
 
-  <section class="button-zone" id="zone">
-    <button id="yesBtn">Yes 💖</button>
-    <button id="noBtn">No 😈</button>
-  </section>
+    <section class="button-zone" id="zone">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😈</button>
+    </section>
 
-  <!-- UPDATED HINT TEXT -->
-  <div class="hint" id="hint">clicking on "No" will make you land in the naughty list 🤪😈</div>
+    <div class="hint" id="hint">clicking on "No" will make you land in the naughty list 🤪😈</div>
+  </div>
 
   <section class="result" id="result">
     <h2>YAY! 🎉</h2>
@@ -170,6 +172,7 @@ const noBtn = document.getElementById("noBtn");
 const result = document.getElementById("result");
 const hint = document.getElementById("hint");
 const surpriseImage = document.getElementById("surpriseImage");
+const questionArea = document.getElementById("questionArea");
 const confettiCanvas = document.getElementById("confettiCanvas");
 
 // Confetti setup
@@ -273,10 +276,9 @@ noBtn.addEventListener("click", e => e.preventDefault());
 
 // YES click
 yesBtn.addEventListener("click", () => {
-  zone.style.display = "none";
-  hint.style.display = "none"; // HIDE THE HINT
-  result.style.display = "block"; // show fireworks/result
-  surpriseImage.style.display = "block"; // SHOW IMAGE
+  questionArea.style.display = "none"; // hide question + buttons + hint
+  result.style.display = "block";       // show fireworks/YAY
+  surpriseImage.style.display = "block"; // show your photo
   resizeConfettiCanvas();
   fullScreenConfetti();
 });
